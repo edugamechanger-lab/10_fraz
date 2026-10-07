@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>10 фраз, которые делают ответы ИИ лучше</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #E7F8F7;
+  --card: #F8FFFF;
+  --white: #FFFFFF;
+
+  --text: #153A3A;
+  --muted: #607D7C;
+
+  --accent: #168C88;
+  --accent-dark: #105F5D;
+  --accent-soft: #CDEEEB;
+
+  --border: #B9DEDB;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+/* PAGE */
+
+.page {
+  min-height: 100vh;
+  padding: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: min(100%, 940px);
+  height: min(880px, calc(100vh - 48px));
+
+  padding: 28px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+
+  box-shadow: 0 14px 45px rgba(20, 95, 91, .09);
+
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* HEADER */
+
+.badge {
+  width: fit-content;
+
+  padding: 7px 11px;
+
+  background: var(--accent-soft);
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .05em;
+}
+
+h1 {
+  margin: 0;
+
+  max-width: 800px;
+
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: .98;
+  letter-spacing: -1.8px;
+}
+
+.lead {
+  margin: 0;
+
+  max-width: 800px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* FLOW */
+
+.flow {
+  padding: 12px 15px;
+
+  background: var(--accent-soft);
+  border-radius: 14px;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+/* HOW TO */
+
+.how {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.step {
+  min-width: 0;
+
+  padding: 9px 10px;
+
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+
+  font-size: 11px;
+  line-height: 1.3;
+
+  color: var(--muted);
+}
+
+.step strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: var(--accent-dark);
+  font-size: 11px;
+}
+
+/* PHRASES AREA */
+
+.phrases {
+  flex: 1;
+  min-height: 150px;
+
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding-right: 4px;
+}
+
+.phrases::-webkit-scrollbar {
+  width: 6px;
+}
+
+.phrases::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.phrases::-webkit-scrollbar-thumb {
+  background: #B7DAD7;
+  border-radius: 10px;
+}
+
+/* PHRASE CARD */
+
+.phrase {
+  flex-shrink: 0;
+
+  padding: 14px 15px;
+
+  background: var(--white);
+
+  border: 1px solid #CBE4E2;
+  border-radius: 15px;
+}
+
+.phrase-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+}
+
+.phrase-content {
+  min-width: 0;
+}
+
+.label {
+  margin-bottom: 5px;
+
+  color: var(--accent);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.phrase-text {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.42;
+  font-weight: 650;
+}
+
+.copy {
+  flex-shrink: 0;
+
+  padding: 8px 11px;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: #E4F5F3;
+  color: var(--accent-dark);
+
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition: background .15s ease, transform .15s ease;
+}
+
+.copy:hover {
+  background: #D4EEEB;
+}
+
+.copy:active {
+  transform: scale(.97);
+}
+
+/* EXTRA CONTENT INSIDE PHRASES */
+
+.chain {
+  margin-top: 9px;
+
+  padding: 8px 10px;
+
+  background: #F0FAF9;
+  border-radius: 9px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.example {
+  margin-top: 8px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.example strong {
+  color: var(--text);
+}
+
+/* BOTTOM */
+
+.hint {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  color: var(--muted);
+}
+
+.telegram-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.telegram-copy {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.telegram-copy strong {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.telegram-copy span {
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+.tg {
+  flex-shrink: 0;
+
+  padding: 13px 16px;
+
+  background: var(--accent-dark);
+  color: #FFFFFF;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 750;
+
+  white-space: nowrap;
+
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.tg:hover {
+  opacity: .92;
+}
+
+.tg:active {
+  transform: scale(.98);
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .page {
+    padding: 12px;
+    align-items: stretch;
+  }
+
+  .card {
+    height: calc(100vh - 24px);
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  .lead {
+    font-size: 13px;
+  }
+
+  .flow {
+    padding: 10px 12px;
+
+    font-size: 11px;
+  }
+
+  .how {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .step {
+    padding: 8px;
+
+    font-size: 10px;
+  }
+
+  .phrase {
+    padding: 12px;
+  }
+
+  .phrase-text {
+    font-size: 12px;
+  }
+
+  .copy {
+    padding: 8px;
+
+    font-size: 10px;
+  }
+
+  .hint {
+    font-size: 10px;
+  }
+
+  .telegram-block {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 8px;
+  }
+
+  .telegram-copy strong {
+    font-size: 13px;
+  }
+
+  .telegram-copy span {
+    font-size: 11px;
+  }
+
+  .tg {
+    width: 100%;
+
+    text-align: center;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="page">
+
+<main class="card">
+
+  <div class="badge">
+    ШПАРГАЛКА ДЛЯ РАБОТЫ С ИИ
+  </div>
+
+
+  <h1>
+    10 фраз, которые делают ответы ИИ лучше
+  </h1>
+
+
+  <p class="lead">
+    Не переписывайте промпт с нуля. Добавьте нужную фразу,
+    чтобы ИИ уточнил задачу, проверил себя, предложил варианты
+    или доработал результат.
+  </p>
+
+
+  <div class="flow">
+    Ваш промпт → ответ ИИ → нужная фраза → результат лучше
+  </div>
+
+
+  <div class="how">
+
+    <div class="step">
+      <strong>01</strong>
+      Дайте ИИ свою обычную задачу
+    </div>
+
+    <div class="step">
+      <strong>02</strong>
+      Посмотрите, чего не хватает в результате
+    </div>
+
+    <div class="step">
+      <strong>03</strong>
+      Выберите подходящую фразу
+    </div>
+
+    <div class="step">
+      <strong>04</strong>
+      Отправьте ее следующим сообщением
+    </div>
+
+  </div>
+
+
+  <div class="phrases">
+
+
+    <!-- 01 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            01 · Если ИИ не хватает контекста
+          </div>
+
+          <p class="phrase-text" id="phrase1">Прежде чем отвечать, задай мне 3–5 уточняющих вопросов, которых тебе не хватает для хорошего результата.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase1', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 02 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            02 · Если ответ получился слабым
+          </div>
+
+          <p class="phrase-text" id="phrase2">Проверь свой ответ и найди в нем слабые места, ошибки и то, что можно улучшить.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase2', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 03 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            03 · После самопроверки
+          </div>
+
+          <p class="phrase-text" id="phrase3">Теперь перепиши ответ с учетом найденных недостатков.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase3', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+      <div class="chain">
+        Полезная связка: ответ → самопроверка → новая версия
+      </div>
+
+    </div>
+
+
+    <!-- 04 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            04 · Если ИИ слишком легко соглашается
+          </div>
+
+          <p class="phrase-text" id="phrase4">Не соглашайся со мной автоматически. Если моя идея слабая или в ней есть ошибка — скажи об этом и объясни почему.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase4', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 05 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            05 · Если нужен лучший вариант
+          </div>
+
+          <p class="phrase-text" id="phrase5">Предложи 3 разных варианта решения этой задачи, а затем сравни их и выбери лучший.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase5', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 06 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            06 · Если важна точность
+          </div>
+
+          <p class="phrase-text" id="phrase6">Если тебе не хватает информации или ты не уверен в факте — не додумывай. Скажи, что именно нужно уточнить.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase6', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 07 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            07 · Если нужен другой взгляд
+          </div>
+
+          <p class="phrase-text" id="phrase7">Представь, что ты [роль]. Оцени результат с позиции [критерии].</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase7', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+      <div class="example">
+        <strong>Например:</strong>
+        Представь, что ты методист. Оцени задание с точки зрения
+        возраста учеников, учебной цели и реалистичности проведения на уроке.
+      </div>
+
+    </div>
+
+
+    <!-- 08 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            08 · Если хочется понять логику ИИ
+          </div>
+
+          <p class="phrase-text" id="phrase8">Объясни, почему ты предлагаешь именно этот вариант.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase8', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 09 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            09 · Если есть четкие требования
+          </div>
+
+          <p class="phrase-text" id="phrase9">Сделай результат по этим критериям: … Перед ответом проверь, что каждый критерий выполнен.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase9', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- 10 -->
+
+    <div class="phrase">
+
+      <div class="phrase-top">
+
+        <div class="phrase-content">
+
+          <div class="label">
+            10 · Если у вас уже есть хороший пример
+          </div>
+
+          <p class="phrase-text" id="phrase10">Я покажу тебе пример хорошего результата. Сначала выдели его закономерности, а потом создай новый по той же логике.</p>
+
+        </div>
+
+        <button
+          class="copy"
+          onclick="copyPhrase('phrase10', this)"
+        >
+          Копировать
+        </button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <p class="hint">
+    Как использовать: дайте ИИ задачу → посмотрите, что хочется улучшить → выберите подходящую фразу → отправьте ее следующим сообщением.
+  </p>
+
+
+  <div class="telegram-block">
+
+    <div class="telegram-copy">
+
+      <strong>
+        Еще больше идей — в моем Telegram-канале
+      </strong>
+
+      <span>
+        Промпты, инструменты и способы использовать ИИ в работе учителя.
+      </span>
+
+    </div>
+
+
+    <a
+      class="tg"
+      href="https://t.me/+zxqGprKXNZQ0YTQ6"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Перейти в Telegram →
+    </a>
+
+  </div>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+async function copyPhrase(id, button) {
+
+  const text = document.getElementById(id).innerText;
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+  } catch (error) {
+
+    const textarea = document.createElement("textarea");
+
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+
+    document.body.appendChild(textarea);
+
+    textarea.select();
+
+    document.execCommand("copy");
+
+    textarea.remove();
+
+  }
+
+  const oldText = button.textContent;
+
+  button.textContent = "Скопировано ✓";
+
+  setTimeout(() => {
+
+    button.textContent = oldText;
+
+  }, 1500);
+
+}
+
+</script>
+
+</body>
+</html>
